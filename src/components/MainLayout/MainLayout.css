@@ -1,0 +1,9 @@
+
+.normal {
+  min-height: 100vh;
+}
+
+.sider {
+  height: 100vh;
+  background: #fff;
+}
