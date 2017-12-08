@@ -1,12 +1,26 @@
 import React from 'react';
+import { connect } from 'dva';
+import { List, Card } from 'antd';
 import styles from './Todos.css';
 
-function Todos() {
+function Todos({ todos }) {
   return (
     <div className={styles.normal}>
-      Component: Todos
+      <Card title="Todo list" bordered={false}>
+        <List
+          bordered
+          dataSource={todos.map(todo => todo.title)}
+          renderItem={item => (<List.Item>{item}</List.Item>)}
+        />
+      </Card>
     </div>
   );
 }
 
-export default Todos;
+function mapStateToProps(state) {
+  return {
+    todos: state.todo.todos,
+  };
+}
+
+export default connect(mapStateToProps)(Todos);
